@@ -21,14 +21,15 @@ const ContactsList = () => {
   };
   return (
     <Ul>
-      {visibleContacts.map(contact => (
-        <Li key={contact.id}>
-          {contact.name}: {contact.number}
-          <Button type="button" onClick={() => handleClick(contact.id)}>
-            Delete
-          </Button>
-        </Li>
-      ))}
+      {visibleContacts &&
+        visibleContacts.map(contact => (
+          <Li key={contact.id}>
+            {contact.name}: {contact.number}
+            <Button type="button" onClick={() => handleClick(contact.id)}>
+              Delete
+            </Button>
+          </Li>
+        ))}
     </Ul>
   );
 };
