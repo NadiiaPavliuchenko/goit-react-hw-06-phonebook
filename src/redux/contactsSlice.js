@@ -6,7 +6,6 @@ const initialContactsState = [];
 
 const persistConfig = {
   key: 'contacts',
-  version: 1,
   storage,
 };
 
@@ -15,8 +14,8 @@ const contactsSlice = createSlice({
   initialState: initialContactsState,
   reducers: {
     addContact: {
-      reducer(state, action) {
-        state.push(action.payload);
+      reducer({ contacts }, action) {
+        contacts.push(action.payload);
       },
       prepare(name, number) {
         return {
@@ -29,9 +28,11 @@ const contactsSlice = createSlice({
       },
     },
     deleteContact: {
-      reducer(state, action) {
-        const index = state.findIndex(contact => contact.id === action.payload);
-        state.splice(index, 1);
+      reducer({ contacts }, action) {
+        const index = contacts.findIndex(
+          contact => contact.id === action.payload
+        );
+        contacts.splice(index, 1);
       },
     },
   },
