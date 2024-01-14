@@ -5,8 +5,10 @@ import storage from 'redux-persist/lib/storage';
 const initialContactsState = [];
 
 const persistConfig = {
-  key: 'contacts',
+  key: 'root',
   storage,
+  version: 1,
+  whitelist: ['contacts'],
 };
 
 const contactsSlice = createSlice({
